@@ -13,19 +13,19 @@ $(document).ready(function() {
 		}
 		if (scores[x] === 10) {
 			score += calculateNextTwoThrows(x) + 10;
-			scoretable.append("<tr><td>" + frame + "</td><td>X</td><td></td><td>" + score + "</td></tr>");
+			scoretable.append("<tr><td>" + frame + "</td><td>X</td><td></td><td></td><td>" + score + "</td></tr>");
 			x++;
 		}
 		else if (x + 1 < scores.length) {
 			if ((scores[x] + scores[x + 1] === 10)) {
 				//alert(scores[x + 1]);
 				score += calculateNextThrow(x + 2) + 10;
-				scoretable.append("<tr><td>" + frame + "</td><td>" + scores[x] + "</td><td>/</td><td>" + score + "</td></tr>");	
+				scoretable.append("<tr><td>" + frame + "</td><td>" + scores[x] + "</td><td>/</td><td></td><td>" + score + "</td></tr>");	
 			}
 			else {
 				//alert(scores[x + 1]);
 				score += scores[x] + scores[x + 1];
-				scoretable.append("<tr><td>" + frame + "</td><td>" + scores[x] + "</td><td>" + scores[x + 1] + "</td><td>" + score + "</td></tr>");
+				scoretable.append("<tr><td>" + frame + "</td><td>" + scores[x] + "</td><td>" + scores[x + 1] + "</td><td></td><td>" + score + "</td></tr>");
 			}
 			x += 2;
 		}
