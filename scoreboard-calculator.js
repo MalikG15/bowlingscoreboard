@@ -2,11 +2,17 @@ $(document).ready(function() {
 
 	$('#begin_calc_button').click(function() {
 		var input = $("#score_list").val();
+		if (!input || /^\s*$/.test(input)) {
+			return;
+		}
 		var splitted_input = input.split(" ");
 		var scores = new Array();
 		var x = 0;
+		console.log(splitted_input);
 		for (var num in splitted_input) {
+			if (splitted_input[num] || !(/^\s*$/.test(splitted_input[num]))) {
 			scores[x++] = parseInt(splitted_input[num]);
+			}
 		}
 
 		if (scores.length > 0) {
