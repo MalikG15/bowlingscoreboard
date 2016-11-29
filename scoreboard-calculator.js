@@ -25,7 +25,7 @@ $(document).ready(function() {
 		var scoretable = $('#scoreboard');
 		var frame = 1;
 		var score = 0;
-		var frameTenLocation = 1;
+		var frameTenIndex = 1;
 		scoretable.append("<tr><th>FR</th><th>R1</th><th>R2</th><th>R3</th><th>Score</th></tr>")
 		for (var x = 0; x < scores.length;) {
 			if (scores[x] === 10) {
@@ -52,29 +52,30 @@ $(document).ready(function() {
 
 			if (frame < 10) frame++;
 			if (frame == 10 && x < scores.length) { 
-				completeTenthRow(scoretable, scores, score, frameTenLocation, x);
+				completeTenthRow(scoretable, scores, score, frameTenIndex, x);
 				break;
 			}
 		}
 	}
 
-	function completeTenthRow(scoretable, scores, score, frameTenLocation, index) {
+	function completeTenthRow(scoretable, scores, score, frameTenIndex, index) {
 		scoretable.append("<tr><td>10</td><td id='1'></td><td id='2'></td><td id='3'></td><td id='4'></td></tr>"); 
 		for (var x = index; x < scores.length;) {
+			if (frameTenIndex > 4) break;
 			if (scores[x] === 10) {
 				score += 10;
-				$('#' + frameTenLocation++).text("X");
+				$('#' + frameTenIndex++).text("X");
 				x++;
 			}
 			else if (x + 1 < scores.length && (scores[x] + scores[x + 1] === 10)) {
 				score += 10;
-				$('#' + frameTenLocation++).text(scores[x]);
-				$('#' + frameTenLocation++).text("/");
+				$('#' + frameTenIndex++).text(scores[x]);
+				$('#' + frameTenIndex++).text("/");
 				x += 2;
 			}
 			else {
 				score += scores[x];
-				$('#' + frameTenLocation++).text(scores[x]);
+				$('#' + frameTenIndex++).text(scores[x]);
 				x++;
 			}
 		}
