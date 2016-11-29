@@ -1,16 +1,13 @@
 $(document).ready(function() {
 
 	var scoretable = $('#scoreboard');
-	var scores = new Array(8, 1, 10, 5, 5, 8, 0, 10, 10, 9, 1, 8, 1, 9, 1, 10, 7, 2);
+	var scores = new Array(8, 1, 10, 5, 5, 8, 0, 10, 10, 9, 1, 8, 1, 9, 1, 9, 1, 2);
 
 	var frame = 1;
 	var score = 0;
+	var temp = "<tr>";
 	for (var x = 0; x < scores.length;) {
 		//scoretable.append("<tr><td>" + frame + "<td>");
-
-		if (frame === 10) {
-			break;
-		}
 		if (scores[x] === 10) {
 			score += calculateNextTwoThrows(x) + 10;
 			scoretable.append("<tr><td>" + frame + "</td><td>X</td><td></td><td></td><td>" + score + "</td></tr>");
@@ -24,13 +21,13 @@ $(document).ready(function() {
 			}
 			else {
 				//alert(scores[x + 1]);
-				score += scores[x] + scores[x + 1];
+				if (frame < 10) score += scores[x] + scores[x + 1];
 				scoretable.append("<tr><td>" + frame + "</td><td>" + scores[x] + "</td><td>" + scores[x + 1] + "</td><td></td><td>" + score + "</td></tr>");
 			}
 			x += 2;
 		}
-
-		frame++;
+		else break;
+		if (frame < 10) frame++;	
 	}
 
 	function calculateNextTwoThrows(index) {
