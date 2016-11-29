@@ -8,13 +8,15 @@
 	</head>
 	<body>
 		<header>
-			<h1 class="h1" style="text-align: center;">Automatic Bowling Scoreboard Calculator</h1>
+			<h1 class="h1" style="text-align: center;">Bowling Scoreboard Creator</h1>
 		</header>
 		<section>
+			<form style="text-align: center; margin-top: 25px;">
+				<label for="score_list">Place Your Score List Here</label>
+				<input id="score_list" type="text" style="width: 25%;" placeholder="separate scores by spaces" />
+				<input id="begin_calc_button" value="Calculate Now!" type="button" class="btn btn-default"/>
+			</form>
 			<table id="scoreboard" class="table table-bordered" style="max-width: 50%; margin-left: 25%; margin-top: 25px;">
-				<tr>
-					<th>FR</th><th>R1</th><th>R2</th><th>R3</th><th>Score</th>
-				</tr>
 			</table>
 		</section>
 		<script
